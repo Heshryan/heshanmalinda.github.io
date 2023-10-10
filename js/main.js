@@ -62,23 +62,51 @@
 	};
 	burgerMenu();
 
-
 	var onePageClick = function() {
-
-
-		$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
-	    event.preventDefault();
-
-	    var href = $.attr(this, 'href');
-
-	    $('html, body').animate({
-	        scrollTop: $($.attr(this, 'href')).offset().top - 70
-	    }, 500, function() {
-	    	// window.location.hash = href;
-	    });
+		$(document).on('click', '#ftco-nav a[href^="#"]', function(event) {
+		  event.preventDefault();
+	  
+		  // Check if the menu is open (contains 'active' class)
+		  if ($('.js-fh5co-nav-toggle').hasClass('active')) {
+			// Trigger a click event on the menu toggle button to close the menu
+			$('.js-fh5co-nav-toggle').trigger('click');
+		  }
+	  
+		  var href = $.attr(this, 'href');
+	  
+		  $('html, body').animate({
+			scrollTop: $($.attr(this, 'href')).offset().top - 70
+		  }, 500, function() {
+			// window.location.hash = href;
+		  });
 		});
+	  };
+	  
 
-	};
+
+
+
+
+
+//	var onePageClick = function() {
+
+
+	//	$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
+//	    event.preventDefault();
+
+// Close the menu by removing the 'active' class from the menu toggle button
+	//	$('.js-fh5co-nav-toggle').removeClass('active');
+
+	 //   var href = $.attr(this, 'href');
+
+	//    $('html, body').animate({
+	//        scrollTop: $($.attr(this, 'href')).offset().top - 70
+	//    }, 500, function() {
+	    	// window.location.hash = href;
+	//    });
+	//	});
+
+//	}; 
 
 	onePageClick();
 	
